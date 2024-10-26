@@ -14,8 +14,16 @@
                     )
             "
         ></ExpeditionTracker>
-        <div class="player-actions-container">
-            <UButton @click="() => (reversed = !reversed)">Reverse</UButton>
+        <div
+            :class="
+                !reversed
+                    ? 'player-actions-container'
+                    : 'player-actions-container reversed'
+            "
+        >
+            <UButton @click="() => (reversed = !reversed)"
+                >Reverse <UIcon name="uil-sort" />
+            </UButton>
         </div>
         <ExpeditionTracker
             :type="ExpeditionTypeEnum.companion"
