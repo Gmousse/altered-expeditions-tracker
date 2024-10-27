@@ -1,5 +1,5 @@
 <template>
-    <div class="tracker-app" id="app">
+    <div id="tracker-app">
         <div
             class="player-tracker-container"
             v-if="players.has(PlayerEnum.player2)"
@@ -108,7 +108,7 @@ function setup2Players() {
 </script>
 
 <style>
-.tracker-app {
+#tracker-app {
     display: flex;
     width: 100%;
     height: 100vh;
@@ -133,5 +133,18 @@ function setup2Players() {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+@media screen and (orientation: portrait) {
+    #tracker-app {
+        display: flex;
+        width: 100vh;
+        height: 50vh;
+        transform: rotate(90deg) translate(25vh, 55%);
+    }
+}
+
+@media screen and (orientation: landscape) {
+    /* Nothing to do */
 }
 </style>
