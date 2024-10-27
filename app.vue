@@ -1,5 +1,5 @@
 <template>
-    <div class="tracker-app">
+    <div class="tracker-app" id="app">
         <div
             class="player-tracker-container"
             v-if="players.has(PlayerEnum.player2)"
@@ -7,6 +7,10 @@
             <PlayerTracker :playerId="PlayerEnum.player2" />
         </div>
         <div class="tracker-app-actions-container">
+            <UButton @click="toggleFullScreen" size="xl">
+                <p>FullScreen</p>
+                <UIcon name="uil-focus" />
+            </UButton>
             <UButton @click="resetAllRegions" size="xl">
                 <p>Reset</p>
                 <UIcon name="uil-refresh" />
@@ -42,6 +46,20 @@ import {
 const players = useState<Map<string, Player>>("players", () => new Map());
 
 setup1Player();
+
+const isFullscreen = ref(false);
+
+function toggleFullScreen() {
+    const screen = document.querySelector("#app");
+
+    if (!isFullscreen.value) {
+        screen?.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+
+    isFullscreen.value = !isFullscreen.value;
+}
 
 function resetAllRegions() {
     for (const player of players.value.values()) {

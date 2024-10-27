@@ -1,7 +1,7 @@
 <template>
     <div class="region-tracker">
         <div v-if="!props.reversed" class="region-tracker-count">
-            <NuxtImg
+            <img
                 :src="`/icons/regions/${props.type}.png`"
                 :placeholder="props.type"
                 class="region-icon"
@@ -24,7 +24,7 @@
         </div>
         <div v-if="props.reversed" class="region-tracker-count">
             <h3 class="reversed">{{ props.value }}</h3>
-            <NuxtImg
+            <img
                 :src="`/icons/regions/${props.type}.png`"
                 class="region-icon reversed"
             />

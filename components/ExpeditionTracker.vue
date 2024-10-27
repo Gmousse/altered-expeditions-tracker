@@ -1,6 +1,6 @@
 <template>
     <div class="expedition-tracker">
-        <NuxtImg
+        <img
             v-if="props.type === ExpeditionTypeEnum.hero"
             :class="
                 !props.reversed ? 'expedition-icon' : 'expedition-icon reversed'
@@ -35,7 +35,7 @@
                     $emit('change', [RegionTypeEnum.water, value])
             "
         />
-        <NuxtImg
+        <img
             v-if="props.type === ExpeditionTypeEnum.companion"
             :class="
                 !props.reversed ? 'expedition-icon' : 'expedition-icon reversed'
