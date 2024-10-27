@@ -51,11 +51,31 @@ const isFullscreen = ref(false);
 
 function toggleFullScreen() {
     const screen = document.querySelector("#app");
-
+    //
     if (!isFullscreen.value) {
-        screen?.requestFullscreen();
+        if (screen?.requestFullscreen) {
+            screen.requestFullscreen();
+            // @ts-ignore
+        } else if (screen?.webkitRequestFullScreen) {
+            // @ts-ignore
+            screen.webkitRequestFullScreen();
+            // @ts-ignore
+        } else if (screen?.mozRequestFullScreen) {
+            // @ts-ignore
+            screen.mozRequestFullScreen();
+        }
     } else {
-        document.exitFullscreen();
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+            // @ts-ignore
+        } else if (document.webkitCancelFullScreen) {
+            // @ts-ignore
+            document.webkitCancelFullScreen();
+            // @ts-ignore
+        } else if (document.mozCancelFullScreen) {
+            // @ts-ignore
+            document.mozCancelFullScreen();
+        }
     }
 
     isFullscreen.value = !isFullscreen.value;
