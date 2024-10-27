@@ -73,4 +73,9 @@ const props = defineProps<{
 .reversed {
     transform: rotate(180deg);
 }
+
+.region-icon {
+    max-width: 3em;
+    max-height: 3em;
+}
 </style>
