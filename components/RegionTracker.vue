@@ -2,7 +2,7 @@
     <div class="region-tracker">
         <div v-if="!props.reversed" class="region-tracker-count">
             <img
-                :src="`/icons/regions/${props.type}.png`"
+                :src="`icons/regions/${props.type}.png`"
                 :placeholder="props.type"
                 class="region-icon"
             />
@@ -25,7 +25,7 @@
         <div v-if="props.reversed" class="region-tracker-count">
             <h3 class="reversed">{{ props.value }}</h3>
             <img
-                :src="`/icons/regions/${props.type}.png`"
+                :src="`icons/regions/${props.type}.png`"
                 class="region-icon reversed"
             />
         </div>

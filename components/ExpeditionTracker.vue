@@ -5,7 +5,7 @@
             :class="
                 !props.reversed ? 'expedition-icon' : 'expedition-icon reversed'
             "
-            :src="`/icons/${props.type}.png`"
+            :src="`icons/${props.type}.png`"
             :placeholder="props.type"
         />
         <RegionTracker
@@ -40,7 +40,7 @@
             :class="
                 !props.reversed ? 'expedition-icon' : 'expedition-icon reversed'
             "
-            :src="`/icons/${props.type}.png`"
+            :src="`icons/${props.type}.png`"
             :placeholder="props.type"
         />
     </div>
