@@ -1,3 +1,5 @@
+process.env.NUXT;
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     ssr: false,
@@ -23,6 +25,11 @@ export default defineNuxtConfig({
                     crossorigin: "use-credentials",
                 },
             ],
+        },
+    },
+    nitro: {
+        prerender: {
+            ignore: ["/manifest.json"],
         },
     },
 });
