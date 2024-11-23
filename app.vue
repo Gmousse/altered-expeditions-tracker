@@ -52,9 +52,9 @@ function toggleFullScreen() {
     if (
         document.fullscreenElement ||
         // @ts-ignore
-        document.webkitIsFullScreen ||
+        document.webkitFullscreenElement ||
         // @ts-ignore
-        document.mozFullScreen
+        document.mozFullScreenElement
     ) {
         if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -115,6 +115,7 @@ function setup2Players() {
 }
 
 #tracker-app {
+    touch-action: none;
     display: flex;
     width: 100%;
     height: 100vh;
