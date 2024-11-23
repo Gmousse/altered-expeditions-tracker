@@ -46,17 +46,32 @@ import {
 const players = useState<Map<string, Player>>("players", () => new Map());
 
 setup1Player();
-
-const isFullscreen = ref(false);
-
 function toggleFullScreen() {
-    const screen = document.querySelector("#app");
+    const screen = document.querySelector("#tracker-app");
     //
-    if (!isFullscreen.value) {
+    if (
+        document.fullscreenElement ||
+        // @ts-ignore
+        document.webkitIsFullScreen ||
+        // @ts-ignore
+        document.mozFullScreen
+    ) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+            // @ts-ignore
+        } else if (document.webkitExitFullscreen) {
+            // @ts-ignore
+            document.webkitExitFullscreen();
+            // @ts-ignore
+        } else if (document.mozCancelFullScreen) {
+            // @ts-ignore
+            document.mozCancelFullScreen();
+        }
+    } else {
         if (screen?.requestFullscreen) {
             screen.requestFullscreen();
             // @ts-ignore
-        } else if (screen?.webkitRequestFullScreen) {
+        } else if (screen?.webkitRequestFullscreen) {
             // @ts-ignore
             screen.webkitRequestFullScreen();
             // @ts-ignore
@@ -64,21 +79,7 @@ function toggleFullScreen() {
             // @ts-ignore
             screen.mozRequestFullScreen();
         }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-            // @ts-ignore
-        } else if (document.webkitCancelFullScreen) {
-            // @ts-ignore
-            document.webkitCancelFullScreen();
-            // @ts-ignore
-        } else if (document.mozCancelFullScreen) {
-            // @ts-ignore
-            document.mozCancelFullScreen();
-        }
     }
-
-    isFullscreen.value = !isFullscreen.value;
 }
 
 function resetAllRegions() {
@@ -108,6 +109,11 @@ function setup2Players() {
 </script>
 
 <style>
+#tracker-app:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
 #tracker-app {
     display: flex;
     width: 100%;
