@@ -1,5 +1,6 @@
 <template>
     <div id="tracker-app">
+        <TrackerScreenOrientationModal />
         <div
             class="player-tracker-container"
             v-if="players.has(PlayerEnum.player2)"
@@ -27,46 +28,12 @@ import {
     resetAllPlayersExpeditions,
     type Player,
 } from "~/entities/Player";
+import { toggleFullScreen } from "~/utils/fullscreen";
 
 const players = useState<Map<string, Player>>("players", () => new Map());
 
 setupPlayer1();
 setupPlayer2();
-function toggleFullScreen() {
-    const screen = document.querySelector("#tracker-app");
-    //
-    if (
-        document.fullscreenElement ||
-        // @ts-ignore
-        document.webkitFullscreenElement ||
-        // @ts-ignore
-        document.mozFullScreenElement
-    ) {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-            // @ts-ignore
-        } else if (document.webkitExitFullscreen) {
-            // @ts-ignore
-            document.webkitExitFullscreen();
-            // @ts-ignore
-        } else if (document.mozCancelFullScreen) {
-            // @ts-ignore
-            document.mozCancelFullScreen();
-        }
-    } else {
-        if (screen?.requestFullscreen) {
-            screen.requestFullscreen();
-            // @ts-ignore
-        } else if (screen?.webkitRequestFullscreen) {
-            // @ts-ignore
-            screen.webkitRequestFullScreen();
-            // @ts-ignore
-        } else if (screen?.mozRequestFullScreen) {
-            // @ts-ignore
-            screen.mozRequestFullScreen();
-        }
-    }
-}
 
 function resetAllRegions() {
     for (const player of players.value.values()) {
