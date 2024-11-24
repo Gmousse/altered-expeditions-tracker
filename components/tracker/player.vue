@@ -14,17 +14,10 @@
                     )
             "
         ></TrackerExpedition>
-        <div
-            :class="
-                !reversed
-                    ? 'player-actions-container'
-                    : 'player-actions-container reversed'
-            "
-        >
-            <UButton @click="() => (reversed = !reversed)"
-                ><UIcon name="uil-sort" />
-            </UButton>
-        </div>
+        <TrackerPlayerActionsContainer
+            @reverse="toggleReverse"
+            :reversed="reversed"
+        />
         <TrackerExpedition
             :type="ExpeditionTypeEnum.companion"
             :regions="
@@ -59,6 +52,10 @@ const props = defineProps<{
 
 let reversed = ref(props.playerId === PlayerEnum.player2);
 
+function toggleReverse() {
+    reversed.value = !reversed.value;
+}
+
 const players = useState<Map<string, Player>>(`players`, () => new Map());
 const player = ref(players.value.get(props.playerId)!);
 </script>
@@ -71,23 +68,5 @@ const player = ref(players.value.get(props.playerId)!);
     color: #3d331d;
     height: 100%;
     width: 100%;
-}
-
-.player-actions-container {
-    background-color: #fcf4de;
-
-    /* background: linear-gradient(#fcf4de, #fcf6e5); */
-    height: 100%;
-    min-width: 5%;
-    max-width: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.player-actions-container > button {
-    justify-content: center;
-    margin-right: 2px;
-    margin-left: 2px;
 }
 </style>
