@@ -1,6 +1,6 @@
 <template>
     <div class="player-tracker">
-        <ExpeditionTracker
+        <TrackerExpedition
             :type="ExpeditionTypeEnum.hero"
             :regions="player.expeditions.get(ExpeditionTypeEnum.hero)!.regions"
             :reversed="reversed"
@@ -13,7 +13,7 @@
                         value
                     )
             "
-        ></ExpeditionTracker>
+        ></TrackerExpedition>
         <div
             :class="
                 !reversed
@@ -22,10 +22,10 @@
             "
         >
             <UButton @click="() => (reversed = !reversed)"
-                >Reverse <UIcon name="uil-sort" />
+                ><UIcon name="uil-sort" />
             </UButton>
         </div>
-        <ExpeditionTracker
+        <TrackerExpedition
             :type="ExpeditionTypeEnum.companion"
             :regions="
                 player.expeditions.get(ExpeditionTypeEnum.companion)!.regions
@@ -40,7 +40,7 @@
                         value
                     )
             "
-        ></ExpeditionTracker>
+        ></TrackerExpedition>
     </div>
 </template>
 
@@ -78,9 +78,16 @@ const player = ref(players.value.get(props.playerId)!);
 
     /* background: linear-gradient(#fcf4de, #fcf6e5); */
     height: 100%;
-    width: 15%;
+    min-width: 5%;
+    max-width: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.player-actions-container > button {
+    justify-content: center;
+    margin-right: 2px;
+    margin-left: 2px;
 }
 </style>

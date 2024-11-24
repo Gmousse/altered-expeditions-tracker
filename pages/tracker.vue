@@ -4,30 +4,15 @@
             class="player-tracker-container"
             v-if="players.has(PlayerEnum.player2)"
         >
-            <PlayerTracker :playerId="PlayerEnum.player2" />
+            <TrackerPlayer :playerId="PlayerEnum.player2" />
         </div>
-        <div class="tracker-app-actions-container">
-            <UButton @click="toggleFullScreen" size="xl">
-                <p>FullScreen</p>
-                <UIcon name="uil-focus" />
-            </UButton>
-            <UButton @click="resetAllRegions" size="xl">
-                <p>Reset</p>
-                <UIcon name="uil-refresh" />
-            </UButton>
-            <UFormGroup class="toggle" label="2 Players">
-                <UToggle
-                    size="xl"
-                    :modelValue="players.has(PlayerEnum.player2)"
-                    @change="
-                        (selected: Boolean) =>
-                            selected ? setupPlayer2() : setupPlayer1()
-                    "
-                />
-            </UFormGroup>
-        </div>
+        <TrackerActionsContainer
+            @fullscreen="toggleFullScreen"
+            @reset="resetAllRegions"
+            @close="navigateTo('/')"
+        />
         <div class="player-tracker-container">
-            <PlayerTracker
+            <TrackerPlayer
                 v-if="players.has(PlayerEnum.player1)"
                 :playerId="PlayerEnum.player1"
             />
@@ -131,16 +116,7 @@ function setupPlayer2() {
 
 .player-tracker-container {
     min-height: 40%;
-}
-
-.tracker-app-actions-container {
-    /* background: linear-gradient(#fcf4de, #fcf6e5); */
-    background-color: #fcf4de;
-    min-height: 20%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    flex-grow: 2;
 }
 
 @media screen and (orientation: portrait) {

@@ -11,12 +11,12 @@
                 <h1>Altered expeditions tracker</h1>
                 <h2>
                     A browser in-game tracker for your
-                    <ULink
+                    <NuxtLink
                         active-class="text-primary"
                         inactive-class="text-primary"
                         target="_blank"
                         to="https://www.altered.gg"
-                        >AlteredTCG</ULink
+                        >AlteredTCG</NuxtLink
                     >
                     expeditions !
                 </h2>
@@ -35,12 +35,12 @@
                 <p>
                     If you want to participate to the development, submit issues
                     or new ideas, visit the
-                    <ULink
+                    <NuxtLink
                         active-class="text-primary"
                         inactive-class="text-primary"
                         target="_blank"
                         to="https://www.altered.gg"
-                        ><UIcon name="uil:github"></UIcon> Github page</ULink
+                        ><UIcon name="uil:github"></UIcon> Github page</NuxtLink
                     >
                 </p>
             </section>
@@ -56,7 +56,7 @@ const navigationLinks = [
     {
         label: "Home",
         icon: "uil:home",
-        to: "/index",
+        to: "/",
         active: true,
     },
     {

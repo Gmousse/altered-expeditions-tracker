@@ -8,7 +8,7 @@
             :src="`icons/${props.type}.png`"
             :placeholder="props.type"
         />
-        <RegionTracker
+        <TrackerRegion
             :type="RegionTypeEnum.forest"
             :value="props.regions.get(RegionTypeEnum.forest)!.counter"
             :reversed="props.reversed"
@@ -17,7 +17,7 @@
                     $emit('change', [RegionTypeEnum.forest, value])
             "
         />
-        <RegionTracker
+        <TrackerRegion
             :type="RegionTypeEnum.mountain"
             :value="props.regions.get(RegionTypeEnum.mountain)!.counter"
             :reversed="props.reversed"
@@ -26,7 +26,7 @@
                     $emit('change', [RegionTypeEnum.mountain, value])
             "
         />
-        <RegionTracker
+        <TrackerRegion
             :type="RegionTypeEnum.water"
             :value="props.regions.get(RegionTypeEnum.water)!.counter"
             :reversed="props.reversed"
@@ -67,7 +67,7 @@ const props = defineProps<{
 }
 
 .expedition-icon {
-    max-width: 5em;
-    max-height: 5em;
+    max-width: 3em;
+    max-height: 3em;
 }
 </style>
